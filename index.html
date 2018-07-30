@@ -1,0 +1,118 @@
+<html>
+<head>
+	<style type="text/css">
+		textarea {
+		    background-color: #000;
+		    border: 1px solid #000;
+		    color: #00ff00;
+		    padding: 8px;
+		    font-family: courier new;
+		}
+
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+			var tryText = 'Try typing some code:<br/><code>&lt;h1&gt; Hello &lt;/h1&gt; <br/>Alert("Hello");<br/>cout <<"Hello"<< endl;<br/></code>';
+			var clueCounter = 0;
+			var flagA = false;
+			var flagB = false;
+			var flagC = false;
+
+		  $(document).ready(function(){
+			document.getElementById("results").innerHTML = tryText;
+		  });
+
+		function dothis(){
+		    	var x =  document.getElementById("code").value.toLowerCase().replace(/\s/g, '');
+		    	var y = "";
+		    	switch (x){
+				    case '<h1>hello</h1>':
+				        y = "html";
+						flagA = true;
+				        break;
+				    case 'alert("hello");':
+				        y = "javascript";
+						flagB = true;
+				        break;
+				    case 'cout<<"hello"<<endl;':
+				        y = "c++";
+						flagC = true;
+				        break;
+				    default:
+				        y = "???";
+		    	}
+		       document.getElementById("results").innerHTML = y + "<br/>" + tryText;
+		       clueCounterFunction();
+		    }
+
+		function typeText (target, message, index, interval) {   
+		  if (index < message.length) {
+		    $(target).append(message[index++]);
+		    setTimeout(function () { typeText(target, message, index, interval); }, interval);
+		  }
+		}
+
+		 function clueCounterFunction(){
+		 	var clueOne="Go to ";
+		 	var clueTwo="the whiteboard ";
+		 	var clueThree="on floor 4";
+		 	
+		 	document.getElementById("clue").innerHTML = "";
+
+		 	clueCounter = 0;
+
+		 	if (flagA)
+		 		clueCounter++;
+
+		 	if (flagB)
+		 		clueCounter++;
+
+		 	if (flagC)
+		 		clueCounter++;
+
+		 	switch (clueCounter){
+		 		case 1:
+		 		typeText("#clue", clueOne, 0, 100);  
+		 		break;
+
+		 		case 2:
+		 		typeText("#clue", clueOne+ clueTwo, 0, 100);  
+		 		break;
+
+		 		case 3:
+		 		typeText("#clue", clueOne+ clueTwo+clueThree, 0, 100); 
+		 		clueCounter = 0;
+		 		flagA = false;
+				flagB = false;
+				flagC = false;
+		 		break;
+
+		 		default:
+		 		document.getElementById("clue").innerHTML = "";
+		 	}
+		 }
+	</script>
+
+</head>
+<body>
+
+	<div id="results">
+		
+
+
+	</div>
+	<div>
+		
+
+		<textarea id="code">
+			
+
+		</textarea>
+
+		<input id="submit" type="button" value="Submit" onclick="dothis();" />
+
+		<div id="clue"> </div>
+	</div>
+
+</body>
+</html>
