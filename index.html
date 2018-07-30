@@ -8,11 +8,16 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
-			var tryText = 'Try typing some code:<br/><code>&lt;h1&gt; Hello &lt;/h1&gt; <br/>alert("Hello");<br/>cout <<"Hello"<< endl;<br/></code>';
+			var tryText = 
+		'In the multimedia degree you will be exposed to several different type of programming languages.<br/>Try entering some of the following lines of code into the terminal:<br/><code>&lt;h1&gt; Hello &lt;/h1&gt; <br/>alert("Hello");<br/>cout <<"Hello"<< endl;<br/></code>';
 			var clueCounter = 0;
 			var flagA = false;
 			var flagB = false;
 			var flagC = false;
+
+			var textHtml="<h1>Hello</h1><br/>HTML is the markup language that we use to structure and give meaning to our web content, for example defining paragraphs, headings, and data tables, or embedding images and videos in the page.<br/>";
+			var textJavascript="<script type='text/javascript'>alert('Hello');<\/script>This line of code is JavaScript. </br> JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else. (Okay, not everything, but it is amazing what you can achieve with a few lines of JavaScript code.)</br>";
+			var textC="";
 
 		  $(document).ready(function(){
 			document.getElementById("results").innerHTML = tryText;
@@ -23,15 +28,15 @@
 		    	var y = "";
 		    	switch (x){
 				    case '<h1>hello</h1>':
-				        y = "html";
+				        y = textHtml;
 						flagA = true;
 				        break;
 				    case 'alert("hello");':
-				        y = "javascript";
+				        y = textJavascript;
 						flagB = true;
 				        break;
 				    case 'cout<<"hello"<<endl;':
-				        y = "c++";
+				        y = textC;
 						flagC = true;
 				        break;
 				    default:
@@ -92,6 +97,7 @@
 </head>
 <body>
 	<div class="container">
+
 		<div class="card">
 			<div class="card-header">Welcome to coding!</div>
 			<div class="card-body">
@@ -102,8 +108,7 @@
 					</div>	
 					<div class="col codebox">
 						<div>
-						<textarea id="code" placeholder="Type here...">
-						</textarea>
+						<textarea id="code" placeholder="Type here..."></textarea>
 						<div class="buttonArea">
 							<input class="btn" id="submit" type="button" value="Submit" onclick="dothis();" />
 						</div>
