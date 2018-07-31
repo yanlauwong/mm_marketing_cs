@@ -91,3 +91,13 @@ div#clue{
 	font-size: 1.5em;
 	vertical-align: middle;	
 }
+
+div#codeResults{
+	padding: 5px 10px;
+	height: 85px;
+	background-color: #222;
+	color: #FFF;
+	font-size: 1em;
+	font-family: courier new;
+	vertical-align: middle;	
+}
