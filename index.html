@@ -9,10 +9,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 			var tryText = 
-			'During your time in the multimedia degree you will be exposed to several different type of programming languages.<br/><br/>'
-			var tryHtml ='To kick things off try entering the following line of <b>mark up language</b> into the terminal:<br/><code>&lt;h1&gt; Hello &lt;/h1&gt;</code>';
-			var tryJava ='Nice! Let us try something else, entering the following lines of <b>scripting language</b> into the terminal and see what happens:<br/><code>alert("Hello");</code>';
-			var tryC ='Great! Now let us try a line of programming language into the terminal:<br/><code>cout <<"Hello"<< endl;</code>';
+			'During your time in the multimedia degree you will be exposed to several different types of programming languages.<br/><br/>'
+			var tryHtml ='To kick things off try entering the following line of <b>mark up language</b> into the terminal:<br/><code>&lt;h1&gt; Hello HTML! &lt;/h1&gt;</code>';
+			var tryJava ='Nice! Let us try something else, entering the following lines of <b>scripting language</b> into the terminal and see what happens:<br/><code>alert("Hello JavaScript!");</code>';
+			var tryC ='Great! Now let us try a line of programming language into the terminal:<br/><code>cout << "Hello C++!" << endl;</code>';
 
 
  // <br/><br/><br/>
@@ -22,13 +22,18 @@
 			var flagB = false;
 			var flagC = false;
 
-			var textHtml="<h1>Hello</h1>This line of code is <b>HTML</b>. By using a h1 <b>tagset</b> you can display your message as a heading inside a webpage. <br/><br/>HTML is one of several <b>markup language</b> that we use to structure and give meaning to digital content. Even word documents use markup languages for structure!<br/>";
+			var textHtml="This line of code is <b>HTML</b>. By using a h1 <b>tagset</b> you can display your message as a heading inside a webpage. <br/><br/>HTML is one of several <b>markup language</b> that we use to structure and give meaning to digital content. Even word documents use markup languages for structure!<br/>";
 
 			var textJavascript="This line of code is <b>JavaScript</b>. The alert function tells the browser to display the message in a pop up window.</br> </br> JavaScript is a <b>scripting language</b> that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else. (Okay, not everything, but it is amazing what you can achieve with a few lines of JavaScript code.) Chances are, everything that is animated within a website JavaScript had something to do with it!</br>";
 
 			var textC="<code>Hello</code> <br/>This line of code is C++. C++ is a general-purpose <b>object-oriented programming (OOP) language</b>, developed by Bjarne Stroustrup, and is an extension of the C language. C++ is considered to be an <b>intermediate-level language</b>, as it encapsulates both high- and low-level language features.<br/><br/><b>Programming languages</b> are a vocabulary and set of grammatical rules for instructing a computer or computing device to perform specific tasks. Programming languages are used to create programs that implement specific <b>algorithms</b>. Software? Games? Apps? Almost all digital applications are created by some programming languages!";
 
 			var textD="This is the end go home, this page will reset itself in 20 sec or press reset now.";
+
+			var resultsError = "Unrecognized. Make sure you follow the instructions.";
+			var resultHTML = "Hello HTML!";
+			var resultJS = "Hello JavaScript!";
+			var resultCpp = "Hello C++!";
 
 		  $(document).ready(function(){
 			document.getElementById("results").innerHTML = tryText + tryHtml;
@@ -40,29 +45,37 @@
 		    	var x =  document.getElementById("code").value.toLowerCase().replace(/\s/g, '');
 		    	var y = "";
 		  		var z = "";
+		  		var codeRes = "";
 		    	switch (x){
-				    case '<h1>hello</h1>':
+				    case '<h1>hellohtml!</h1>':
 				        y = textHtml;
 				        z = tryJava;
 						flagA = true;
-
+						codeRes = resultHTML;
+						$('#code').val('');
 				        break;
-				    case 'alert("hello");':
+				    case 'alert("hellojavascript!");':
 				        y = textJavascript;
 				        z = tryC;
 						flagB = true;
+						codeRes = resultJS;
 						alert("Hello");
+						$('#code').val('');
 				        break;
-				    case 'cout<<"hello"<<endl;':
+				    case 'cout<<"helloc++!"<<endl;':
+				    	alert("asd");
 				        y = textC;
 				        z = tryD;
 						flagC = true;
+						codeRes = resultCpp;
+						$('#code').val('');
 				        break;
 				    default:
-				        y = "???";
+				        codeRes = resultsError;
 		    	}
-			   document.getElementById("temp").innerHTML = y + "<br/>";
-		       document.getElementById("results").innerHTML = z;
+			   if(y != "") document.getElementById("temp").innerHTML = y + "<br/>";
+		       if(z != "") document.getElementById("results").innerHTML = z;
+		       document.getElementById("codeResults").innerHTML = "Output: " + codeRes;
 				$('#temp').fadeIn();
 		
 		       clueCounterFunction();
@@ -136,7 +149,7 @@
 						<div class="buttonArea">
 							<input class="btn" id="submit" type="button" value="Submit" onclick="dothis();" />
 						</div>
-						
+						<div id="codeResults">Output: _</div>
 					</div>
 					</div>	
 				</div>
