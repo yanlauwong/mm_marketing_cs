@@ -9,49 +9,50 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
-     var time = new Date().getTime();
-     $(document).bind("mousemove keypress", function(e) {
-         time = new Date().getTime();
-     });
+     var time = 0;
 
      function refresh() {
-         if(new Date().getTime() - time >= 20000) 
+         if(new Date().getTime() - time >= 300000) 
              window.location.reload(true);
          else 
-             setTimeout(refresh, 1000);
+             setTimeout(refresh, 10001);
      }
 
-     setTimeout(refresh, 1000);
+			var tryText = 'During your time in the multimedia degree you will be exposed to several different types of programming languages.<br/><br/>';
 
-			var tryText = 
-			'During your time in the multimedia degree you will be exposed to several different types of programming languages.<br/><br/>'
-			var tryHtml ='To kick things off try entering the following line of <b>mark up language</b> into the terminal:<br/><code>&lt;h1&gt; Hello HTML! &lt;/h1&gt;</code>';
-			var tryJava ='Nice! Let us try something else, entering the following lines of <b>scripting language</b> into the terminal and see what happens:<br/><code>alert("Hello JavaScript!");</code>';
-			var tryC ='Great! Now let us try a line of programming language into the terminal:<br/><code>cout << "Hello C++!" << endl;</code>';
+			var tryHtml ='To kick things off try entering the following line of <b>mark up language</b> into the dark text box:</br><br/><code>&lt;h1&gt; Hello HTML! &lt;/h1&gt;</code>';
 
+			var tryJava ='Nice! Let us try something else, type out the following line of <b>scripting language</b> into the same area and see what happens (remember to clear what was already in the area):<br/></br><code>alert("Hello JavaScript!");</code>';
+
+			var tryC ='Great! Now let us try a line of programming language:<br/></br><code>cout << "Hello C++!" << endl;</code>';
 
 			var clueCounter = 0;
 			var flagA = false;
 			var flagB = false;
 			var flagC = false;
 
-			var textHtml="This line of code is <b>HTML</b>. By using a h1 <b>tagset</b> you can display your message as a heading inside a webpage. <br/><br/>HTML is one of several <b>markup language</b> that we use to structure and give meaning to digital content. Even word documents use markup languages for structure!<br/>";
+			var textHtml="This line of code is <b>HTML</b>. By using a h1 <b>tagset</b> you can display your message as a heading inside a webpage. <br/><br/>HTML is one of several <b>markup language</b> that we use to structure and give meaning to data, even word documents and game save files uses markup languages to format and structure information.<br/>";
 
-			var textJavascript="This line of code is <b>JavaScript</b>. The alert function tells the browser to display the message in a pop up window.</br> </br> JavaScript is a <b>scripting language</b> that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else. (Okay, not everything, but it is amazing what you can achieve with a few lines of JavaScript code.) Chances are, everything that is animated within a website JavaScript had something to do with it!</br>";
+			var textJavascript="This line of code is <b>JavaScript</b>. The alert function tells the browser to display the message in a pop up window.</br> </br> JavaScript is a <b>scripting language</b> that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else. (Okay, not everything, but it is amazing what you can achieve with a few lines of JavaScript code.) Chances are, anything that is interactive within a website was created with some form of JavaScript or other scripting languages.</br>";
 
-			var textC="This line of code is C++. C++ is a general-purpose <b>object-oriented programming (OOP) language</b>, developed by Bjarne Stroustrup, and is an extension of the C language. C++ is considered to be an <b>intermediate-level language</b>, as it encapsulates both high- and low-level language features.<br/><br/><b>Programming languages</b> are a vocabulary and set of grammatical rules for instructing a computer or computing device to perform specific tasks. Programming languages are used to create programs that implement specific <b>algorithms</b>. Software? Games? Apps? Almost all digital applications are created by some programming languages!";
+			var textC="This line of code is C++. C++ is a general-purpose <b>object-oriented programming (OOP) language</b>, developed by Bjarne Stroustrup, and is an extension of the C language. C++ is considered to be an <b>intermediate-level language</b>, as it encapsulates both high- and low-level language features.<br/><br/><b>Programming languages</b> are a vocabulary and set of grammatical rules for instructing a computer or computing device to perform specific tasks. Programming languages are used to create programs that implement specific <b>algorithms</b>. Software? Games? Apps? Almost all digital applications are created by programming languages, some of these languages include: Java, C#, Python, Ruby, Swift.";
 
-			var textD="<br/>This is the end! This page will reset itself in 20 sec.";
+			var textD="<br/>This is the end! Why not reset the page for the next user?";
 
 			var resultsError = "Unrecognized. Make sure you follow the instructions.";
-			var resultHTML = "Hello HTML!";
-			var resultJS = "Hello JavaScript!";
-			var resultCpp = "Hello C++!";
+			var resultHTML = "<h1>Hello HTML!</h1>";
+			var resultJS = "<br/>Hello JavaScript!";
+			var resultCpp = "<br/>Hello C++!";
 
 		  $(document).ready(function(){
 			document.getElementById("results").innerHTML = tryText + tryHtml;
 			$('#code').val('');
 		  });
+
+		  function doReset(){
+			time = (new Date().getTime() - 330000);
+			refresh();
+		  }
 
 		function dothis(){
 				$('#temp').hide();
@@ -81,6 +82,9 @@
 						flagC = true;
 						codeRes = resultCpp;
 						$('#code').val('');
+						//set timers to 30 sec
+						time = new Date().getTime();
+    					setTimeout(refresh, 1000);
 				        break;
 				    default:
 				        codeRes = resultsError;
@@ -101,9 +105,9 @@
 		}
 
 		 function clueCounterFunction(){
-		 	var clueOne="Go to ";
-		 	var clueTwo="the whiteboard ";
-		 	var clueThree="on floor 4";
+		 	var clueOne="Follow ";
+		 	var clueTwo="the arrows ";
+		 	var clueThree="to the poster on floor 4";
 		 	
 		 	document.getElementById("clue").innerHTML = "";
 
@@ -157,11 +161,14 @@
 					</div>	
 					<div class="col codebox">
 						<div>
-						<textarea id="code" placeholder="Type here..."></textarea>
+						<textarea id="code" placeholder="Hi! I'm a textbox, type your code here :)"></textarea>
 						<div class="buttonArea">
 							<input class="btn" id="submit" type="button" value="Submit" onclick="dothis();" />
 						</div>
 						<div id="codeResults">Output: _</div>
+						<div class="buttonArea">
+							<input class="btn" id="reset" type="button" value="Reset System" onclick="doReset();" />
+						</div>
 					</div>
 					</div>	
 				</div>
@@ -172,11 +179,6 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
 	</div>
-	
-
 </body>
 </html>
