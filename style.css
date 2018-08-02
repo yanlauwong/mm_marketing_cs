@@ -1,11 +1,12 @@
 body{
 	background-color: #D7D1B9;
 	font-family: 'Roboto';
+	overflow: hidden;
 }
 
 *{
 	border: 0 !important;
-	border-radius: 0 !important;
+	/*border-radius: 0 !important;*/
 }
 
 :root{
@@ -33,6 +34,10 @@ div.codebox{
 	padding-right: 0 !important;
 }
 
+div.card{
+	margin-top: 107px;
+}
+
 div.card-body{
 	padding: 0 !important;
 }
@@ -43,6 +48,8 @@ div.card-header{
 	font-family: 'Bitter';
 	font-size: 2em !important;
 	font-weight: bold;
+	border-radius: 0 !important;
+	z-index: 0;
 }
 
 div.card-body{
@@ -100,4 +107,65 @@ div#codeResults{
 	font-size: 1em;
 	font-family: courier new;
 	vertical-align: middle;	
+}
+
+div.banner-top{
+	position: absolute;
+	top: 0px;
+	left: 116px;
+}
+
+div.banner-text{
+	border-radius: 100px;
+	background-color: #E76535;
+	font-family: 'Bitter';
+	font-size: 14px;
+	width: 100px;
+	height: 100px;
+	padding-top: 29px;
+	color: #FFF;
+	text-align: center;
+	font-weight: bold;
+	position: relative;
+	z-index: 4;
+	margin-left: -40;
+	margin-top: 10px;
+}
+
+div.banner-outline{
+	background-color: #D7D1B9;
+	border-radius: 100px;
+	width: 120px;
+	height: 120px;
+	position: absolute;
+	top: 1px;
+	left: -51px;
+	z-index: 3;
+}
+
+div.banner-top-cs{
+	position: absolute;
+	background-color: #E76535;
+	height: 25px;
+	width: 2110%;
+	z-index: 2;
+	top: 50px;
+}
+
+div.banner-top-mm{
+	position: absolute;
+	background-color: #6C9A30;
+	height: 20px;
+	width: 500%;
+	z-index: 2;
+	top: 25px;
+}
+
+div.banner-top-vd{
+	position: absolute;
+	background-color: #3A99A2;
+	height: 20px;
+	width: 400%;
+	z-index: 2;
+	top: 81px;
 }
