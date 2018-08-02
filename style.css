@@ -112,7 +112,7 @@ div#codeResults{
 div.banner-top{
 	position: absolute;
 	top: 0px;
-	left: 116px;
+	left: 50%;
 }
 
 div.banner-text{
@@ -127,8 +127,8 @@ div.banner-text{
 	text-align: center;
 	font-weight: bold;
 	position: relative;
-	z-index: 4;
-	margin-left: -40;
+	z-index: 5;
+	margin-left: -605px;
 	margin-top: 10px;
 }
 
@@ -137,35 +137,40 @@ div.banner-outline{
 	border-radius: 100px;
 	width: 120px;
 	height: 120px;
-	position: absolute;
-	top: 1px;
-	left: -51px;
+	position: relative;
+	margin-left: -615px;
 	z-index: 3;
+	margin-top: -109px;
 }
 
 div.banner-top-cs{
 	position: absolute;
 	background-color: #E76535;
 	height: 25px;
-	width: 2110%;
-	z-index: 2;
+	width: 2000px;
+	z-index: 4;
 	top: 50px;
+	/*margin-left: -570px;
+	margin-top: -147px;*/
+	left: -545px;
 }
 
 div.banner-top-mm{
 	position: absolute;
 	background-color: #6C9A30;
 	height: 20px;
-	width: 500%;
+	width: 300px;
 	z-index: 2;
 	top: 25px;
+	left: -545px;
 }
 
 div.banner-top-vd{
 	position: absolute;
 	background-color: #3A99A2;
 	height: 20px;
-	width: 400%;
+	width: 200px;
 	z-index: 2;
 	top: 81px;
+	left: -545px;
 }
